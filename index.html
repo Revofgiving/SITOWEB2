@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Revolution of Giving - DAO Decentralizzata</title>
+    <meta name="description" content="Revolution of Giving - Una DAO rivoluzionaria per il dare decentralizzato. Entra nel futuro della filantropia Web3.">
+    <meta name="keywords" content="DAO, Web3, Revolution of Giving, decentralizzato, blockchain, filantropia, donazioni, ethereum">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.revolutionofgiving.world/">
+    <meta property="og:title" content="Revolution of Giving - DAO Decentralizzata">
+    <meta property="og:description" content="Una DAO rivoluzionaria per il dare decentralizzato. Entra nel futuro della filantropia Web3.">
+    <meta property="og:image" content="https://www.revolutionofgiving.world/LANDINGPAGEWEB2.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.revolutionofgiving.world/">
+    <meta property="twitter:title" content="Revolution of Giving - DAO Decentralizzata">
+    <meta property="twitter:description" content="Una DAO rivoluzionaria per il dare decentralizzato. Entra nel futuro della filantropia Web3.">
+    <meta property="twitter:image" content="https://www.revolutionofgiving.world/LANDINGPAGEWEB2.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="canonical" href="https://www.revolutionofgiving.world/">
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="LANDINGPAGEWEB2.jpg" as="image">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body, html {
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden;
+            overflow-y: auto; /* Permetti scroll verticale */
+            font-family: Arial, sans-serif;
+        }
+        
+        .landing-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            background-image: url('LANDINGPAGEWEB2.jpg');
+            background-size: contain; /* Mostra tutta l'immagine senza tagliarla */
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-color: #ff6b9d;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Responsive - mantieni sempre tutta l'immagine visibile */
+        @media (max-width: 768px) {
+            .landing-container {
+                background-size: contain;
+                background-position: center center;
+            }
+        }
+        
+        /* Per schermi desktop grandi */
+        @media (min-width: 1200px) {
+            .landing-container {
+                background-size: cover; /* Su desktop grandi usa cover */
+                background-position: center center;
+            }
+        }
+        
+        .web3-button {
+            position: absolute;
+            /* Mobile - posizionamento ottimizzato */
+            left: 58%; /* Allineato con desktop/tablet */
+            top: 65%; /* Posizionamento adattato per mobile */
+            transform: translate(-50%, -50%) scale(1.03); /* Stesso ingrandimento */
+            width: 85vw; /* Larghezza responsive per mobile */
+            max-width: 350px; /* Dimensione massima per mobile */
+            height: 65px; /* Altezza proporzionata per mobile */
+            background-color: transparent;
+            border: none;
+            border-radius: 32px; /* Border radius proporzionato */
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: transparent;
+            font-size: 0;
+        }
+        
+        .web3-button:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.6);
+            color: rgba(255, 255, 255, 1);
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+        }
+        
+        .web3-button:active {
+            transform: translateY(-10px) scale(0.95);
+        }
+        
+        /* Tablet - posizionamento ottimizzato */
+        @media (min-width: 481px) and (max-width: 768px) {
+            .web3-button {
+                left: 58%; /* Allineato con desktop */
+                top: 58%; /* Adattato per tablet */
+                transform: translate(-50%, -50%) scale(1.03); /* Stesso ingrandimento */
+                width: 450px; /* Dimensione proporzionata per tablet */
+                height: 75px; /* Altezza proporzionata */
+                max-width: 450px;
+            }
+        }
+        
+        /* Desktop - posizionamento preciso sul pulsante blu */
+        @media (min-width: 769px) {
+            .web3-button {
+                left: 58%; /* -1% verso sinistra (59% - 1% = 58%) */
+                right: auto;
+                top: 60%; /* +5% verso il basso (55% + 5% = 60%) */
+                transform: translate(-50%, -50%) scale(1.03); /* +3% ingrandimento */
+                width: 480px; /* Larghezza precisa per coprire il testo blu */
+                height: 80px; /* Altezza ottimale per l'area cliccabile */
+                max-width: 480px;
+            }
+        }
+        
+        /* Desktop large - per schermi grandi con cover */
+        @media (min-width: 1200px) {
+            .web3-button {
+                left: 58%; /* -1% verso sinistra (59% - 1% = 58%) */
+                right: auto;
+                top: 58%; /* +5% verso il basso (53% + 5% = 58%) */
+                transform: translate(-50%, -50%) scale(1.03); /* +3% ingrandimento */
+                width: 500px; /* Dimensione calibrata per schermi grandi */
+                height: 85px; /* Altezza proporzionale */
+            }
+        }
+        
+        /* Nessuna animazione pulse */
+    </style>
+</head>
+<body>
+    <div class="landing-container">
+        <a href="https://revolutionofgiving.eth.limo" 
+           class="web3-button" 
+           target="_blank" 
+           rel="noopener noreferrer"
+           title="Entra nel Web3 - Revolution of Giving DAO">
+        </a>
+    </div>
+    
+    <script>
+        // Script per migliorare l'esperienza utente
+        document.addEventListener('DOMContentLoaded', function() {
+            const button = document.querySelector('.web3-button');
+            
+            // Nessuna animazione pulse da rimuovere
+            
+            // Gestione del click con feedback
+            button.addEventListener('click', function(e) {
+                // Piccola animazione di feedback
+                this.style.transform = 'translateY(-10px) scale(0.9)';
+                setTimeout(() => {
+                    this.style.transform = 'translateY(-10px) scale(1)';
+                }, 100);
+                
+                // Log per analytics (opzionale)
+                console.log('Reindirizzamento a Web3 DAO');
+            });
+            
+            // Preload dell'immagine per performance migliori
+            const img = new Image();
+            img.src = 'LANDINGPAGEWEB2.jpg';
+        });
+    </script>
+</body>
+</html>
+

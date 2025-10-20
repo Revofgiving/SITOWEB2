@@ -75,16 +75,18 @@
         
         .web3-button {
             position: absolute;
-            /* Mobile - posizionamento ottimizzato */
-            left: 58%; /* Allineato con desktop/tablet */
-            top: 65%; /* Posizionamento adattato per mobile */
-            transform: translate(-50%, -50%) scale(1.03); /* Stesso ingrandimento */
-            width: 85vw; /* Larghezza responsive per mobile */
-            max-width: 350px; /* Dimensione massima per mobile */
-            height: 65px; /* Altezza proporzionata per mobile */
+            /* Mobile - responsive ottimizzato */
+            left: 50%;
+            top: 45vh; /* Viewport height per consistenza */
+            transform: translate(-50%, -50%) scale(1.03);
+            width: 80vw;
+            max-width: 300px;
+            height: 12vw;
+            max-height: 60px;
+            min-height: 40px;
             background-color: transparent;
             border: none;
-            border-radius: 32px; /* Border radius proporzionato */
+            border-radius: 25px;
             cursor: pointer;
             transition: all 0.3s ease;
             display: flex;
@@ -110,37 +112,46 @@
         /* Tablet - posizionamento ottimizzato */
         @media (min-width: 481px) and (max-width: 768px) {
             .web3-button {
-                left: 58%; /* Allineato con desktop */
-                top: 58%; /* Adattato per tablet */
-                transform: translate(-50%, -50%) scale(1.03); /* Stesso ingrandimento */
-                width: 450px; /* Dimensione proporzionata per tablet */
-                height: 75px; /* Altezza proporzionata */
-                max-width: 450px;
+                left: 58%;
+                top: 42vh; /* Viewport height per consistenza */
+                transform: translate(-50%, -50%) scale(1.03);
+                width: 60vw;
+                max-width: 400px;
+                height: 8vh;
+                max-height: 70px;
+                min-height: 50px;
             }
         }
         
         /* Desktop - posizionamento preciso sul pulsante blu */
         @media (min-width: 769px) {
             .web3-button {
-                left: 58%; /* -1% verso sinistra (59% - 1% = 58%) */
+                left: 58%;
                 right: auto;
-                top: 60%; /* +5% verso il basso (55% + 5% = 60%) */
-                transform: translate(-50%, -50%) scale(1.03); /* +3% ingrandimento */
-                width: 480px; /* Larghezza precisa per coprire il testo blu */
-                height: 80px; /* Altezza ottimale per l'area cliccabile */
-                max-width: 480px;
+                top: 40vh; /* Viewport height per consistenza cross-resolution */
+                transform: translate(-50%, -50%) scale(1.03);
+                width: 35vw;
+                max-width: 450px;
+                min-width: 300px;
+                height: 6vh;
+                max-height: 75px;
+                min-height: 60px;
             }
         }
         
         /* Desktop large - per schermi grandi con cover */
         @media (min-width: 1200px) {
             .web3-button {
-                left: 58%; /* -1% verso sinistra (59% - 1% = 58%) */
+                left: 58%;
                 right: auto;
-                top: 58%; /* +5% verso il basso (53% + 5% = 58%) */
-                transform: translate(-50%, -50%) scale(1.03); /* +3% ingrandimento */
-                width: 500px; /* Dimensione calibrata per schermi grandi */
-                height: 85px; /* Altezza proporzionale */
+                top: 38vh; /* Viewport height ottimizzato per schermi grandi */
+                transform: translate(-50%, -50%) scale(1.03);
+                width: 30vw;
+                max-width: 500px;
+                min-width: 350px;
+                height: 5vh;
+                max-height: 80px;
+                min-height: 65px;
             }
         }
         

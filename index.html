@@ -90,9 +90,9 @@
             left: 50%;
             top: 50%;
             transform: translate(-50%, -50%);
-            /* Posizionamento relativo al pulsante blu nell'immagine */
-            margin-left: 8vw; /* Offset per posizionare sul pulsante blu mobile */
-            margin-top: -3vh; /* Offset verticale per mobile */
+            /* Mobile - posizionamento NASA-grade */
+            margin-left: 5vw; /* Perfetto per mobile portrait */
+            margin-top: 5vh; /* Allineato al pulsante blu mobile */
             width: 80vw;
             max-width: 300px;
             height: 12vw;
@@ -123,11 +123,11 @@
             transform: translate(-50%, -50%) translateY(-2px) scale(0.95);
         }
         
-        /* Tablet - offset ottimizzato */
-        @media (min-width: 481px) and (max-width: 768px) {
+        /* Tablet Portrait */
+        @media (min-width: 481px) and (max-width: 768px) and (orientation: portrait) {
             .web3-button {
-                margin-left: 12vw;
-                margin-top: -8vh;
+                margin-left: 15vw;
+                margin-top: 8vh;
                 width: 60vw;
                 max-width: 400px;
                 height: 8vh;
@@ -136,11 +136,24 @@
             }
         }
         
+        /* Tablet Landscape */
+        @media (min-width: 481px) and (max-width: 1024px) and (orientation: landscape) {
+            .web3-button {
+                margin-left: 20vw;
+                margin-top: 10vh;
+                width: 50vw;
+                max-width: 450px;
+                height: 7vh;
+                max-height: 65px;
+                min-height: 45px;
+            }
+        }
+        
         /* Desktop - offset preciso per il pulsante blu */
         @media (min-width: 769px) {
             .web3-button {
-                margin-left: 3vw; /* Leggero offset a destra */
-                margin-top: -10vh;
+                margin-left: 23vw; /* +10% più a destra = 23vw */
+                margin-top: 12vh; /* -3% più in alto = 12vh */
                 width: 35vw;
                 max-width: 450px;
                 min-width: 300px;
@@ -153,14 +166,55 @@
         /* Desktop large - offset per schermi grandi */
         @media (min-width: 1200px) {
             .web3-button {
-                margin-left: 2vw; /* Quasi centrato per schermi grandi */
-                margin-top: -12vh;
+                margin-left: 25vw; /* +10% più a destra per schermi grandi */
+                margin-top: 10vh; /* -3% più in alto = 10vh */
                 width: 30vw;
                 max-width: 500px;
                 min-width: 350px;
                 height: 5vh;
                 max-height: 80px;
                 min-height: 65px;
+            }
+        }
+        
+        /* Mobile Small (iPhone SE, etc.) */
+        @media (max-width: 375px) {
+            .web3-button {
+                margin-left: 3vw;
+                margin-top: 3vh;
+                width: 75vw;
+                height: 10vh;
+            }
+        }
+        
+        /* Mobile Large (iPhone Pro, etc.) */
+        @media (min-width: 376px) and (max-width: 480px) {
+            .web3-button {
+                margin-left: 6vw;
+                margin-top: 6vh;
+                width: 78vw;
+                height: 11vh;
+            }
+        }
+        
+        /* Large Desktop (4K, iMac, etc.) */
+        @media (min-width: 1920px) {
+            .web3-button {
+                margin-left: 26vw;
+                margin-top: 11vh;
+                width: 25vw;
+                max-width: 600px;
+                height: 4vh;
+                max-height: 85px;
+                min-height: 70px;
+            }
+        }
+        
+        /* Ultra Wide (21:9, etc.) */
+        @media (min-aspect-ratio: 21/9) {
+            .web3-button {
+                margin-left: 28vw;
+                margin-top: 12vh;
             }
         }
         

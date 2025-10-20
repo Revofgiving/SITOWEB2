@@ -2,7 +2,11 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>Revolution of Giving - DAO Decentralizzata</title>
     <meta name="description" content="Revolution of Giving - Una DAO rivoluzionaria per il dare decentralizzato. Entra nel futuro della filantropia Web3.">
     <meta name="keywords" content="DAO, Web3, Revolution of Giving, decentralizzato, blockchain, filantropia, donazioni, ethereum">
@@ -29,10 +33,18 @@
     <link rel="preload" href="LANDINGPAGEWEB2.jpg" as="image">
     
     <style>
-        * {
+        /* NASA CSS RESET - Universal Web Compatibility */
+        *, *::before, *::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+        }
+        
+        html {
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
         }
         
         body, html {
@@ -86,10 +98,14 @@
         
         .web3-button {
             position: absolute;
-            /* Centering universale per tutti i dispositivi */
+            /* NASA-GRADE CROSS-BROWSER CENTERING */
             left: 50%;
             top: 50%;
             transform: translate(-50%, -50%);
+            -webkit-transform: translate(-50%, -50%);
+            -moz-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            -o-transform: translate(-50%, -50%);
             /* Mobile - posizionamento NASA-grade */
             margin-left: 5vw; /* Perfetto per mobile portrait */
             margin-top: 5vh; /* Allineato al pulsante blu mobile */
@@ -103,6 +119,10 @@
             border-radius: 25px;
             cursor: pointer;
             transition: all 0.3s ease;
+            -webkit-transition: all 0.3s ease;
+            -moz-transition: all 0.3s ease;
+            -ms-transition: all 0.3s ease;
+            -o-transition: all 0.3s ease;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -116,11 +136,21 @@
             border-color: rgba(255, 255, 255, 0.6);
             color: rgba(255, 255, 255, 1);
             transform: translate(-50%, -50%) translateY(-2px) scale(1.05);
+            -webkit-transform: translate(-50%, -50%) translateY(-2px) scale(1.05);
+            -moz-transform: translate(-50%, -50%) translateY(-2px) scale(1.05);
+            -ms-transform: translate(-50%, -50%) translateY(-2px) scale(1.05);
+            -o-transform: translate(-50%, -50%) translateY(-2px) scale(1.05);
             box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+            -webkit-box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+            -moz-box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
         }
         
         .web3-button:active {
             transform: translate(-50%, -50%) translateY(-2px) scale(0.95);
+            -webkit-transform: translate(-50%, -50%) translateY(-2px) scale(0.95);
+            -moz-transform: translate(-50%, -50%) translateY(-2px) scale(0.95);
+            -ms-transform: translate(-50%, -50%) translateY(-2px) scale(0.95);
+            -o-transform: translate(-50%, -50%) translateY(-2px) scale(0.95);
         }
         
         /* Tablet Portrait */
@@ -237,16 +267,27 @@
             
             // Nessuna animazione pulse da rimuovere
             
-            // Gestione del click con feedback
+            // NASA-GRADE Cross-browser event handling
             button.addEventListener('click', function(e) {
-                // Piccola animazione di feedback mantenendo il centering
-                this.style.transform = 'translate(-50%, -50%) translateY(-2px) scale(0.9)';
+                // Animazione cross-browser con prefixes
+                var transform = 'translate(-50%, -50%) translateY(-2px) scale(0.9)';
+                this.style.transform = transform;
+                this.style.webkitTransform = transform;
+                this.style.mozTransform = transform;
+                this.style.msTransform = transform;
+                this.style.oTransform = transform;
+                
                 setTimeout(() => {
-                    this.style.transform = 'translate(-50%, -50%) translateY(-2px) scale(1)';
+                    var transformReset = 'translate(-50%, -50%) translateY(-2px) scale(1)';
+                    this.style.transform = transformReset;
+                    this.style.webkitTransform = transformReset;
+                    this.style.mozTransform = transformReset;
+                    this.style.msTransform = transformReset;
+                    this.style.oTransform = transformReset;
                 }, 100);
                 
-                // Log per analytics (opzionale)
-                console.log('Reindirizzamento a Web3 DAO');
+                // Analytics logging
+                console.log('NASA-GRADE: Reindirizzamento a Web3 DAO');
             });
             
             // Preload dell'immagine per performance migliori

@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://www.revolutionofgiving.world/sitemap.xml
+
+# Crawl-delay per essere gentili con i crawler
+Crawl-delay: 1

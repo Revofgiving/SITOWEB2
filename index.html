@@ -96,16 +96,14 @@
             }
         }
 
-        /*
+        /
          * Overlay cliccabile (.web3-button)
-         * Questo elemento è un'area trasparente posizionata sopra il pulsante blu presente nell'immagine di sfondo.
-         * Regola i valori left/top in base al tuo breakpoint (vedi media queries più sotto).
-         * Per debug: aggiungi temporaneamente la classe "debug" all'elemento per vedere il riquadro.
+         * Posizione fissata sui valori forniti dall'utente.
          */
         .web3-button{
           position: absolute;
-          left: 50%;
-          top: 62%;                 /* valore di partenza, regola per il tuo asset */
+          left: 73.92%;
+          top: 60.29%;
           transform: translate(-50%, -50%);
           width: 60vw;
           max-width: 520px;
@@ -124,13 +122,6 @@
           outline: none;
         }
 
-        /* Debug helper - attiva temporaneamente per vedere l'overlay */
-        .web3-button.debug {
-          background: rgba(255,255,255,0.08);
-          outline: 2px dashed rgba(0,0,0,0.18);
-          cursor: move; /* indicate draggable */
-        }
-
         /* accessibilità - screen reader text */
         .sr-only {
           position: absolute;
@@ -144,36 +135,9 @@
           border: 0;
         }
 
-        /* Debug panel */
-        #debug-panel {
-          position: fixed;
-          right: 12px;
-          bottom: 12px;
-          background: rgba(0,0,0,0.7);
-          color: #fff;
-          font-family: Arial, sans-serif;
-          font-size: 13px;
-          padding: 10px 12px;
-          border-radius: 8px;
-          z-index: 9999;
-          display: none;
-          width: 220px;
-          box-shadow: 0 6px 18px rgba(0,0,0,0.4);
-        }
-        #debug-panel.visible { display: block; }
-        #debug-panel .row { display:flex; justify-content:space-between; margin-bottom:6px; }
-        #debug-panel .row label { font-size:12px; opacity:0.9; }
-        #debug-panel .coords { font-weight:700; }
-        #debug-panel button { background:#1a73e8; border:none; color:#fff; padding:6px 8px; border-radius:6px; cursor:pointer; }
-        #debug-panel .hint { font-size:11px; opacity:0.8; margin-top:6px; }
-
-        /* Responsive adjustments (regola left/top se necessario per allineare il bottone in ogni breakpoint) */
-
-        /* Mobile portrait */
+        /* Responsive adjustments (se necessario - manteniamo le regole precedenti per fallback) */
         @media screen and (max-width: 480px) and (orientation: portrait) {
           .web3-button{
-            left: 50%;
-            top: 58%;
             width: 80vw;
             max-width: 360px;
             height: 11vh;
@@ -181,22 +145,16 @@
           }
         }
 
-        /* Mobile small */
         @media (max-width: 375px) {
           .web3-button {
-            left: 50%;
-            top: 56%;
             width: 78vw;
             height: 12vh;
             min-height: 50px;
           }
         }
 
-        /* Tablet portrait */
         @media (min-width: 481px) and (max-width: 768px) and (orientation: portrait) {
           .web3-button{
-            left: 50%;
-            top: 60%;
             width: 70vw;
             max-width: 460px;
             height: 9.5vh;
@@ -204,11 +162,8 @@
           }
         }
 
-        /* Tablet / small desktop landscape */
         @media (min-width: 481px) and (max-width: 1024px) and (orientation: landscape) {
           .web3-button{
-            left: 48%;
-            top: 62%;
             width: 55vw;
             max-width: 520px;
             height: 8vh;
@@ -216,11 +171,8 @@
           }
         }
 
-        /* Desktop */
         @media (min-width: 769px) {
           .web3-button{
-            left: 42%;         /* regola questo valore in base all'immagine desktop */
-            top: 62%;
             width: 40vw;
             max-width: 580px;
             min-width: 360px;
@@ -230,21 +182,15 @@
           }
         }
 
-        /* Large desktop */
         @media (min-width: 1200px) {
           .web3-button{
-            left: 40%;
-            top: 61%;
             width: 34vw;
             max-width: 640px;
           }
         }
 
-        /* Large Desktop (4K, iMac, etc.) */
         @media (min-width: 1920px) {
             .web3-button {
-                left: 39%;
-                top: 61%;
                 width: 30vw;
                 max-width: 700px;
             }
@@ -262,26 +208,11 @@
         </a>
     </div>
     
-    <!-- Debug panel and draggable overlay script -->
-    <div id="debug-panel" aria-hidden="true">
-      <div class="row"><label>Debug overlay</label><button id="debug-toggle">Enable</button></div>
-      <div class="row"><label>Left</label><div class="coords" id="coord-left">50%</div></div>
-      <div class="row"><label>Top</label><div class="coords" id="coord-top">62%</div></div>
-      <div class="row"><button id="copy-css">Copy CSS</button><button id="reset-pos">Reset</button></div>
-      <div class="hint">Tip: hold Shift while dragging to move faster. Press Ctrl+Shift+D to toggle panel.</div>
-    </div>
-
     <script>
-        // Script per migliorare l'esperienza utente
+        // Script per migliorare l'esperienza utente (pulito, senza strumenti di debug)
         document.addEventListener('DOMContentLoaded', function() {
             const button = document.querySelector('.web3-button');
-            const panel = document.getElementById('debug-panel');
-            const toggleBtn = document.getElementById('debug-toggle');
-            const coordLeft = document.getElementById('coord-left');
-            const coordTop = document.getElementById('coord-top');
-            const copyBtn = document.getElementById('copy-css');
-            const resetBtn = document.getElementById('reset-pos');
-
+            
             // Click visual feedback per mobile/desktop
             button.addEventListener('click', function(e) {
                 var transform = 'translate(-50%, -50%) translateY(-2px) scale(0.95)';
@@ -294,166 +225,10 @@
                 }, 120);
                 console.log('Reindirizzamento a Web3 DAO');
             });
-
+            
             // Preload dell'immagine per performance migliori
             const img = new Image();
             img.src = 'LANDINGPAGEWEB2.jpg';
-
-            // Debug utilities
-            function showPanel() { panel.classList.add('visible'); panel.setAttribute('aria-hidden','false'); }
-            function hidePanel() { panel.classList.remove('visible'); panel.setAttribute('aria-hidden','true'); }
-
-            // Toggle panel with keyboard shortcut Ctrl+Shift+D
-            window.addEventListener('keydown', function(e){
-                if (e.ctrlKey && e.shiftKey && e.code === 'KeyD') {
-                    if (panel.classList.contains('visible')) hidePanel(); else showPanel();
-                }
-            });
-
-            // Auto-show panel if ?debug=1 in URL
-            const params = new URLSearchParams(window.location.search);
-            if (params.get('debug') === '1') showPanel();
-
-            function updateCoordsDisplay(l, t){
-                coordLeft.textContent = Math.round(l*100)+'%';
-                coordTop.textContent = Math.round(t*100)+'%';
-            }
-
-            // Make overlay draggable when debug enabled
-            let dragging = false;
-            let startX=0, startY=0, startLeft=0, startTop=0;
-
-            function enableDebugMode(){
-                button.classList.add('debug');
-                toggleBtn.textContent = 'Disable';
-                // compute current left/top in fraction
-                const rectParent = button.parentElement.getBoundingClientRect();
-                const style = window.getComputedStyle(button);
-                const leftPx = parseFloat(style.left);
-                const topPx = parseFloat(style.top);
-                // left/top may be percentages in CSS; compute from bounding boxes
-                const bbox = button.getBoundingClientRect();
-                const leftPct = ((leftPx+0) / rectParent.width);
-                const topPct = ((topPx+0) / rectParent.height);
-                updateCoordsDisplay(leftPct, topPct);
-            }
-
-            function disableDebugMode(){
-                button.classList.remove('debug');
-                toggleBtn.textContent = 'Enable';
-            }
-
-            toggleBtn.addEventListener('click', function(){
-                if (button.classList.contains('debug')) disableDebugMode(); else enableDebugMode();
-            });
-
-            // Drag handlers
-            button.addEventListener('mousedown', function(e){
-                if (!button.classList.contains('debug')) return; // only draggable in debug mode
-                e.preventDefault();
-                dragging = true;
-                startX = e.clientX;
-                startY = e.clientY;
-                // compute parent rect
-                const parentRect = button.parentElement.getBoundingClientRect();
-                const style = window.getComputedStyle(button);
-                // current left/top in pixels (handle percent values too)
-                let curLeft = style.left.includes('%') ? (parseFloat(style.left)/100)*parentRect.width : parseFloat(style.left);
-                let curTop = style.top.includes('%') ? (parseFloat(style.top)/100)*parentRect.height : parseFloat(style.top);
-                startLeft = curLeft;
-                startTop = curTop;
-            });
-
-            window.addEventListener('mousemove', function(e){
-                if (!dragging) return;
-                e.preventDefault();
-                const dx = e.clientX - startX;
-                const dy = e.clientY - startY;
-                const parentRect = button.parentElement.getBoundingClientRect();
-                // If shift pressed, move faster
-                const multiplier = e.shiftKey ? 1.8 : 1;
-                let newLeftPx = startLeft + dx*multiplier;
-                let newTopPx = startTop + dy*multiplier;
-                // clamp inside parent
-                newLeftPx = Math.max(0, Math.min(newLeftPx, parentRect.width));
-                newTopPx = Math.max(0, Math.min(newTopPx, parentRect.height));
-                const newLeftPct = newLeftPx / parentRect.width;
-                const newTopPct = newTopPx / parentRect.height;
-                // apply as percent values to keep responsive behaviour
-                button.style.left = (newLeftPct*100).toFixed(2)+'%';
-                button.style.top = (newTopPct*100).toFixed(2)+'%';
-                button.style.transform = 'translate(-50%, -50%)';
-                updateCoordsDisplay(newLeftPct, newTopPct);
-            });
-
-            window.addEventListener('mouseup', function(e){
-                if (!dragging) return;
-                dragging = false;
-            });
-
-            // Touch support
-            button.addEventListener('touchstart', function(e){
-                if (!button.classList.contains('debug')) return;
-                dragging = true;
-                const touch = e.touches[0];
-                startX = touch.clientX; startY = touch.clientY;
-                const parentRect = button.parentElement.getBoundingClientRect();
-                const style = window.getComputedStyle(button);
-                let curLeft = style.left.includes('%') ? (parseFloat(style.left)/100)*parentRect.width : parseFloat(style.left);
-                let curTop = style.top.includes('%') ? (parseFloat(style.top)/100)*parentRect.height : parseFloat(style.top);
-                startLeft = curLeft; startTop = curTop;
-            });
-            window.addEventListener('touchmove', function(e){
-                if (!dragging) return;
-                const touch = e.touches[0];
-                const dx = touch.clientX - startX; const dy = touch.clientY - startY;
-                const parentRect = button.parentElement.getBoundingClientRect();
-                let newLeftPx = startLeft + dx; let newTopPx = startTop + dy;
-                newLeftPx = Math.max(0, Math.min(newLeftPx, parentRect.width));
-                newTopPx = Math.max(0, Math.min(newTopPx, parentRect.height));
-                const newLeftPct = newLeftPx / parentRect.width;
-                const newTopPct = newTopPx / parentRect.height;
-                button.style.left = (newLeftPct*100).toFixed(2)+'%';
-                button.style.top = (newTopPct*100).toFixed(2)+'%';
-                button.style.transform = 'translate(-50%, -50%)';
-                updateCoordsDisplay(newLeftPct, newTopPct);
-            });
-            window.addEventListener('touchend', function(){ dragging = false; });
-
-            // Copy CSS
-            copyBtn.addEventListener('click', function(){
-                const left = button.style.left || window.getComputedStyle(button).left;
-                const top = button.style.top || window.getComputedStyle(button).top;
-                const css = `.web3-button { left: ${left}; top: ${top}; }`;
-                navigator.clipboard.writeText(css).then(() => {
-                    copyBtn.textContent = 'Copied!';
-                    setTimeout(()=> copyBtn.textContent = 'Copy CSS', 1400);
-                }).catch(()=>{ copyBtn.textContent = 'Copy failed'; setTimeout(()=> copyBtn.textContent = 'Copy CSS', 1400); });
-            });
-
-            // Reset
-            resetBtn.addEventListener('click', function(){
-                button.style.left = '';
-                button.style.top = '';
-                button.classList.remove('debug');
-                toggleBtn.textContent = 'Enable';
-                updateCoordsDisplay(0.5, 0.62);
-            });
-
-            // Initialize coords display from computed style
-            function initCoords() {
-                const parentRect = button.parentElement.getBoundingClientRect();
-                const style = window.getComputedStyle(button);
-                let leftVal = style.left;
-                let topVal = style.top;
-                let leftPct = 0.5, topPct = 0.62;
-                if (leftVal.includes('%')) leftPct = parseFloat(leftVal)/100;
-                else leftPct = parseFloat(leftVal)/parentRect.width;
-                if (topVal.includes('%')) topPct = parseFloat(topVal)/100;
-                else topPct = parseFloat(topVal)/parentRect.height;
-                updateCoordsDisplay(leftPct, topPct);
-            }
-            initCoords();
         });
     </script>
 </body>

@@ -99,21 +99,21 @@
         .web3-button {
             position: absolute;
             /* NASA-GRADE CROSS-BROWSER CENTERING */
-            left: 50%;
-            top: 50%;
+            left: 71.75%;
+            top: 60.33%;
             transform: translate(-50%, -50%);
             -webkit-transform: translate(-50%, -50%);
             -moz-transform: translate(-50%, -50%);
             -ms-transform: translate(-50%, -50%);
             -o-transform: translate(-50%, -50%);
             /* Mobile - posizionamento NASA-grade */
-            margin-left: 5vw; /* Perfetto per mobile portrait */
-            margin-top: 5vh; /* Allineato al pulsante blu mobile */
-            width: 80vw;
-            max-width: 300px;
-            height: 12vw;
-            max-height: 60px;
-            min-height: 40px;
+            margin-left: 0; /* Perfetto per mobile portrait */
+            margin-top: 0; /* Allineato al pulsante blu mobile */
+            width: 144vw;
+            max-width: 540px;
+            height: 21.6vw;
+            max-height: 108px;
+            min-height: 72px;
             background-color: transparent;
             border: none;
             border-radius: 25px;
@@ -180,30 +180,34 @@
         }
         
         /* Desktop - offset preciso per il pulsante blu */
-        @media (min-width: 769px) {
+        @media (min-width: 769px) and (max-width: 1199px) {
             .web3-button {
-                margin-left: 28vw; /* +5% più a destra = 28vw */
-                margin-top: 32vh; /* +20% più in basso = 32vh */
-                width: 35vw;
-                max-width: 450px;
-                min-width: 300px;
-                height: 6vh;
-                max-height: 75px;
-                min-height: 60px;
+                left: 83.25%;
+                top: 60.65%;
+                margin-left: 0;
+                margin-top: 0;
+                width: 28vw;
+                max-width: 400px;
+                min-width: 280px;
+                height: 5.5vh;
+                max-height: 70px;
+                min-height: 55px;
             }
         }
         
         /* Desktop large - offset per schermi grandi */
-        @media (min-width: 1200px) {
+        @media (min-width: 1200px) and (max-width: 1919px) {
             .web3-button {
-                margin-left: 30vw; /* +5% più a destra per schermi grandi */
-                margin-top: 30vh; /* +20% più in basso = 30vh */
-                width: 30vw;
-                max-width: 500px;
-                min-width: 350px;
-                height: 5vh;
-                max-height: 80px;
-                min-height: 65px;
+                left: 71.75%;
+                top: 60.33%;
+                margin-left: 0;
+                margin-top: 0;
+                width: 26vw;
+                max-width: 450px;
+                min-width: 320px;
+                height: 4.5vh;
+                max-height: 75px;
+                min-height: 60px;
             }
         }
         
@@ -230,8 +234,10 @@
         /* Large Desktop (4K, iMac, etc.) */
         @media (min-width: 1920px) {
             .web3-button {
-                margin-left: 31vw; /* +5% più a destra */
-                margin-top: 31vh; /* +20% più in basso */
+                left: 71.75%;
+                top: 60.33%;
+                margin-left: 0;
+                margin-top: 0;
                 width: 25vw;
                 max-width: 600px;
                 height: 4vh;

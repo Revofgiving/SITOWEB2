@@ -70,12 +70,13 @@
             min-height: 100vh;
         }
         
+        /* Overlay cliccabile: usiamo width responsive con clamp e posizionamenti per breakpoint */
         .web3-button{
           position: absolute;
-          left: 95.77%;
+          left: 50%;                 /* default: centered horizontally */
           top: 60.62%;
           transform: translate(-50%, -50%);
-          width: 60vw;
+          width: clamp(300px, 40vw, 520px); /* never too wide */
           max-width: 520px;
           min-width: 300px;
           height: 9vh;
@@ -92,6 +93,63 @@
           outline: none;
         }
 
+        /* Desktop: shift left to match wide-layout image */
+        @media (min-width: 1200px) {
+          .web3-button{
+            left: 40%;
+            top: 61%;
+            width: 34vw;
+            max-width: 640px;
+          }
+        }
+
+        /* Tablet / small desktop landscape */
+        @media (min-width: 481px) and (max-width: 1024px) and (orientation: landscape) {
+          .web3-button{
+            left: 48%;
+            top: 62%;
+            width: 55vw;
+            max-width: 520px;
+            height: 8vh;
+            border-radius: 48px;
+          }
+        }
+
+        /* Tablet portrait */
+        @media (min-width: 481px) and (max-width: 768px) and (orientation: portrait) {
+          .web3-button{
+            left: 50%;
+            top: 60%;
+            width: 70vw;
+            max-width: 460px;
+            height: 9.5vh;
+            border-radius: 44px;
+          }
+        }
+
+        /* Mobile small */
+        @media (max-width: 375px) {
+          .web3-button {
+            left: 50%;
+            top: 56%;
+            width: 78vw;
+            height: 12vh;
+            min-height: 50px;
+          }
+        }
+
+        /* Mobile portrait */
+        @media screen and (max-width: 480px) and (orientation: portrait) {
+          .web3-button{
+            left: 50%;
+            top: 58%;
+            width: 80vw;
+            max-width: 360px;
+            height: 11vh;
+            border-radius: 40px;
+          }
+        }
+
         /* accessibilità - screen reader text */
         .sr-only {
           position: absolute;
@@ -103,67 +161,6 @@
           clip: rect(0,0,0,0);
           white-space: nowrap;
           border: 0;
-        }
-
-        /* Responsive adjustments (se necessario - manteniamo le regole precedenti for fallback) */
-        @media screen and (max-width: 480px) and (orientation: portrait) {
-          .web3-button{
-            width: 80vw;
-            max-width: 360px;
-            height: 11vh;
-            border-radius: 40px;
-          }
-        }
-
-        @media (max-width: 375px) {
-          .web3-button {
-            width: 78vw;
-            height: 12vh;
-            min-height: 50px;
-          }
-        }
-
-        @media (min-width: 481px) and (max-width: 768px) and (orientation: portrait) {
-          .web3-button{
-            width: 70vw;
-            max-width: 460px;
-            height: 9.5vh;
-            border-radius: 44px;
-          }
-        }
-
-        @media (min-width: 481px) and (max-width: 1024px) and (orientation: landscape) {
-          .web3-button{
-            width: 55vw;
-            max-width: 520px;
-            height: 8vh;
-            border-radius: 48px;
-          }
-        }
-
-        @media (min-width: 769px) {
-          .web3-button{
-            width: 40vw;
-            max-width: 580px;
-            min-width: 360px;
-            height: 6.5vh;
-            min-height: 60px;
-            border-radius: 48px;
-          }
-        }
-
-        @media (min-width: 1200px) {
-          .web3-button{
-            width: 34vw;
-            max-width: 640px;
-          }
-        }
-
-        @media (min-width: 1920px) {
-            .web3-button {
-                width: 30vw;
-                max-width: 700px;
-            }
         }
     </style>
 </head>

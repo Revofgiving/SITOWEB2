@@ -95,160 +95,136 @@
                 background-position: center center;
             }
         }
-        
-        .web3-button {
-            position: absolute;
-            /* NASA-GRADE CROSS-BROWSER CENTERING */
+
+        /*
+         * Overlay cliccabile (.web3-button)
+         * Questo elemento è un'area trasparente posizionata sopra il pulsante blu presente nell'immagine di sfondo.
+         * Regola i valori left/top in base al tuo breakpoint (vedi media queries più sotto).
+         * Per debug: aggiungi temporaneamente la classe "debug" all'elemento per vedere il riquadro.
+         */
+        .web3-button{
+          position: absolute;
+          left: 50%;
+          top: 62%;                 /* valore di partenza, regola per il tuo asset */
+          transform: translate(-50%, -50%);
+          width: 60vw;
+          max-width: 520px;
+          min-width: 300px;
+          height: 9vh;
+          max-height: 84px;
+          min-height: 60px;
+          border-radius: 48px;      /* deve coincidere con il bordo del pulsante blu nell'immagine */
+          background: transparent;
+          border: none;
+          cursor: pointer;
+          display: block;
+          z-index: 60;              /* sopra lo sfondo */
+          -webkit-tap-highlight-color: transparent;
+          text-decoration: none;
+          outline: none;
+        }
+
+        /* Debug helper - attiva temporaneamente per vedere l'overlay */
+        .web3-button.debug {
+          background: rgba(255,255,255,0.06);
+          outline: 2px dashed rgba(0,0,0,0.18);
+        }
+
+        /* accessibilità - screen reader text */
+        .sr-only {
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          padding: 0;
+          margin: -1px;
+          overflow: hidden;
+          clip: rect(0,0,0,0);
+          white-space: nowrap;
+          border: 0;
+        }
+
+        /* Responsive adjustments (regola left/top se necessario per allineare il bottone in ogni breakpoint) */
+
+        /* Mobile portrait */
+        @media screen and (max-width: 480px) and (orientation: portrait) {
+          .web3-button{
             left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            -webkit-transform: translate(-50%, -50%);
-            -moz-transform: translate(-50%, -50%);
-            -ms-transform: translate(-50%, -50%);
-            -o-transform: translate(-50%, -50%);
-            /* Mobile - posizionamento NASA-grade */
-            margin-left: 5vw; /* Perfetto per mobile portrait */
-            margin-top: 5vh; /* Allineato al pulsante blu mobile */
+            top: 58%;
             width: 80vw;
-            max-width: 300px;
-            height: 12vw;
-            max-height: 60px;
-            min-height: 40px;
-            background-color: transparent;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            -webkit-transition: all 0.3s ease;
-            -moz-transition: all 0.3s ease;
-            -ms-transition: all 0.3s ease;
-            -o-transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            color: transparent;
-            font-size: 0;
+            max-width: 360px;
+            height: 11vh;
+            border-radius: 40px;
+          }
         }
-        
-        .web3-button:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 255, 255, 0.6);
-            color: rgba(255, 255, 255, 1);
-            transform: translate(-50%, -50%) translateY(-2px) scale(1.05);
-            -webkit-transform: translate(-50%, -50%) translateY(-2px) scale(1.05);
-            -moz-transform: translate(-50%, -50%) translateY(-2px) scale(1.05);
-            -ms-transform: translate(-50%, -50%) translateY(-2px) scale(1.05);
-            -o-transform: translate(-50%, -50%) translateY(-2px) scale(1.05);
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
-            -webkit-box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
-            -moz-box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
-        }
-        
-        .web3-button:active {
-            transform: translate(-50%, -50%) translateY(-2px) scale(0.95);
-            -webkit-transform: translate(-50%, -50%) translateY(-2px) scale(0.95);
-            -moz-transform: translate(-50%, -50%) translateY(-2px) scale(0.95);
-            -ms-transform: translate(-50%, -50%) translateY(-2px) scale(0.95);
-            -o-transform: translate(-50%, -50%) translateY(-2px) scale(0.95);
-        }
-        
-        /* Tablet Portrait */
-        @media (min-width: 481px) and (max-width: 768px) and (orientation: portrait) {
-            .web3-button {
-                margin-left: 15vw;
-                margin-top: 8vh;
-                width: 60vw;
-                max-width: 400px;
-                height: 8vh;
-                max-height: 70px;
-                min-height: 50px;
-            }
-        }
-        
-        /* Tablet Landscape */
-        @media (min-width: 481px) and (max-width: 1024px) and (orientation: landscape) {
-            .web3-button {
-                margin-left: 20vw;
-                margin-top: 10vh;
-                width: 50vw;
-                max-width: 450px;
-                height: 7vh;
-                max-height: 65px;
-                min-height: 45px;
-            }
-        }
-        
-        /* Desktop - offset preciso per il pulsante blu */
-        @media (min-width: 769px) {
-            .web3-button {
-                margin-left: 28vw; /* +5% più a destra = 28vw */
-                margin-top: 32vh; /* +20% più in basso = 32vh */
-                width: 35vw;
-                max-width: 450px;
-                min-width: 300px;
-                height: 6vh;
-                max-height: 75px;
-                min-height: 60px;
-            }
-        }
-        
-        /* Desktop large - offset per schermi grandi */
-        @media (min-width: 1200px) {
-            .web3-button {
-                margin-left: 30vw; /* +5% più a destra per schermi grandi */
-                margin-top: 30vh; /* +20% più in basso = 30vh */
-                width: 30vw;
-                max-width: 500px;
-                min-width: 350px;
-                height: 5vh;
-                max-height: 80px;
-                min-height: 65px;
-            }
-        }
-        
-        /* Mobile Small (iPhone SE, etc.) */
+
+        /* Mobile small */
         @media (max-width: 375px) {
-            .web3-button {
-                margin-left: 3vw;
-                margin-top: 3vh;
-                width: 75vw;
-                height: 10vh;
-            }
+          .web3-button {
+            left: 50%;
+            top: 56%;
+            width: 78vw;
+            height: 12vh;
+            min-height: 50px;
+          }
         }
-        
-        /* Mobile Large (iPhone Pro, etc.) */
-        @media (min-width: 376px) and (max-width: 480px) {
-            .web3-button {
-                margin-left: 6vw;
-                margin-top: 6vh;
-                width: 78vw;
-                height: 11vh;
-            }
+
+        /* Tablet portrait */
+        @media (min-width: 481px) and (max-width: 768px) and (orientation: portrait) {
+          .web3-button{
+            left: 50%;
+            top: 60%;
+            width: 70vw;
+            max-width: 460px;
+            height: 9.5vh;
+            border-radius: 44px;
+          }
         }
-        
+
+        /* Tablet / small desktop landscape */
+        @media (min-width: 481px) and (max-width: 1024px) and (orientation: landscape) {
+          .web3-button{
+            left: 48%;
+            top: 62%;
+            width: 55vw;
+            max-width: 520px;
+            height: 8vh;
+            border-radius: 48px;
+          }
+        }
+
+        /* Desktop */
+        @media (min-width: 769px) {
+          .web3-button{
+            left: 42%;         /* regola questo valore in base all'immagine desktop */
+            top: 62%;
+            width: 40vw;
+            max-width: 580px;
+            min-width: 360px;
+            height: 6.5vh;
+            min-height: 60px;
+            border-radius: 48px;
+          }
+        }
+
+        /* Large desktop */
+        @media (min-width: 1200px) {
+          .web3-button{
+            left: 40%;
+            top: 61%;
+            width: 34vw;
+            max-width: 640px;
+          }
+        }
+
         /* Large Desktop (4K, iMac, etc.) */
         @media (min-width: 1920px) {
             .web3-button {
-                margin-left: 31vw; /* +5% più a destra */
-                margin-top: 31vh; /* +20% più in basso */
-                width: 25vw;
-                max-width: 600px;
-                height: 4vh;
-                max-height: 85px;
-                min-height: 70px;
+                left: 39%;
+                top: 61%;
+                width: 30vw;
+                max-width: 700px;
             }
         }
-        
-        /* Ultra Wide (21:9, etc.) */
-        @media (min-aspect-ratio: 21/9) {
-            .web3-button {
-                margin-left: 33vw; /* +5% più a destra */
-                margin-top: 32vh; /* +20% più in basso */
-            }
-        }
-        
-        /* Nessuna animazione pulse */
     </style>
 </head>
 <body>
@@ -256,7 +232,9 @@
         <a href="https://revolutionofgiving.eth.limo" 
            class="web3-button" 
            target="_blank" 
-           rel="noopener noreferrer">
+           rel="noopener noreferrer"
+           aria-label="Entra nel nostro mondo">
+           <span class="sr-only">CLICCA ED ENTRA NEL NOSTRO MONDO</span>
         </a>
     </div>
     
@@ -265,12 +243,10 @@
         document.addEventListener('DOMContentLoaded', function() {
             const button = document.querySelector('.web3-button');
             
-            // Nessuna animazione pulse da rimuovere
-            
-            // NASA-GRADE Cross-browser event handling
+            // click visual feedback per mobile/desktop
             button.addEventListener('click', function(e) {
-                // Animazione cross-browser con prefixes
-                var transform = 'translate(-50%, -50%) translateY(-2px) scale(0.9)';
+                // Animazione veloce style-only (no class toggle per semplicità)
+                var transform = 'translate(-50%, -50%) translateY(-2px) scale(0.95)';
                 this.style.transform = transform;
                 this.style.webkitTransform = transform;
                 this.style.mozTransform = transform;
@@ -278,16 +254,16 @@
                 this.style.oTransform = transform;
                 
                 setTimeout(() => {
-                    var transformReset = 'translate(-50%, -50%) translateY(-2px) scale(1)';
+                    var transformReset = 'translate(-50%, -50%)';
                     this.style.transform = transformReset;
                     this.style.webkitTransform = transformReset;
                     this.style.mozTransform = transformReset;
                     this.style.msTransform = transformReset;
                     this.style.oTransform = transformReset;
-                }, 100);
+                }, 120);
                 
                 // Analytics logging
-                console.log('NASA-GRADE: Reindirizzamento a Web3 DAO');
+                console.log('Reindirizzamento a Web3 DAO');
             });
             
             // Preload dell'immagine per performance migliori
@@ -297,4 +273,3 @@
     </script>
 </body>
 </html>
-
